@@ -54,21 +54,19 @@ def third_floor():
         print_delay("It looks like you need some kind of  "
                     "keycard to open the door.")
         print_delay("You head back to the elevator.")
-    elif id_card == "received" and employee_handbook == "not received":
+    elif id_card == "received":
         print_delay("You use your ID card to open the door.")
         print_delay("Your program manager greets you and tells you that "
                     "you need to have a copy of the employee handbook "
                     "in order to start work.")
-        print_delay("They scowl when they see that you don't have it, "
-                    "and send you back to the elevator.")
-    elif id_card == "received" and employee_handbook == "received":
-        print_delay("You use your ID card to open the door.")
-        print_delay("Your program manager greets you and tells you that "
-                    "you need to have a copy of the employee handbook "
-                    "in order to start work.")
-        print_delay("Fortunately, you got that from HR!")
-        print_delay("Congratulations! you are ready to start your new job "
-                    "as vice president of engineering!")
+        if employee_handbook == "not received":
+            print_delay("They scowl when they see that you don't have it, "
+                        "and send you back to the elevator.")
+        elif employee_handbook == "received":
+            print_delay("Fortunately, you got that from HR!")
+            print_delay("Congratulations! you are ready to start your new job "
+                        "as vice president of engineering!")
+            return "end"
 
 def choose_floor():
     print_delay("Plaese enter a number for the floor you would like to visit")
@@ -80,7 +78,10 @@ def choose_floor():
     elif choice == "2":
         second_floor()
     elif choice == "3":
-        third_floor()
+        # third_floor() -no need to use, below line runs function as well assign
+        terminate = third_floor()
+        if terminate == "end":
+            return "program terminated"
     else:
         print_delay("")
     choose_floor()
