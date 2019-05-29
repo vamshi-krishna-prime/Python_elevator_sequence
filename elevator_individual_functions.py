@@ -8,6 +8,13 @@ def intro():
     print_delay("You have just arrived at your new job!")
     print_delay("You are in the elevator.")
 
+def documents():
+    global id_card
+    global employee_handbook
+    if id_card == "received":
+        return "id_card_received"
+    elif id_card == "not received" and
+
 def floor(num, department):
     print_delay("You push the button for the " + num + "floor.")
     print_dealy("After a few movements, you find yourself in the " + department)
@@ -15,7 +22,6 @@ def floor(num, department):
 def first_floor():
     global first_count
     global id_card
-    first_count += 1
     if id_card == "not received":
         print_delay("The clerk greets you and gives you your ID card.")
         id_card = "received"
@@ -27,8 +33,6 @@ def first_floor():
 def second_floor():
     global id_card
     global employee_handbook
-    global second_count
-    second_count += 1
     if id_card == "not received":
         print_delay("The head of HR greets you.")
         print_delay("He has something for you, but says he can't give it to you"
@@ -46,8 +50,6 @@ def second_floor():
 def third_floor():
     global id_card
     global employee_handbook
-    global third_count
-    third_count += 1
     print_delay("This is where you work!")
     if id_card == "not received":
         print_delay("Unfortunately, the door is locked and you can't get in.")
@@ -66,6 +68,19 @@ def third_floor():
             print_delay("Fortunately, you got that from HR!")
             print_delay("Congratulations! you are ready to start your new job "
                         "as vice president of engineering!")
+            return "end"
+
+def third_floor():
+    global id_card
+    global employee_handbook
+    if id_card == "not received":
+        print_delay(f1)
+    elif id_card == "received":
+        print_delay(f2)
+        if employee_handbook == "not received":
+            print_delay(f3)
+        elif employee_handbook == "received":
+            print_delay(f4)
             return "end"
 
 def choose_floor():
@@ -87,9 +102,6 @@ def choose_floor():
     choose_floor()
 
 
-first_count = 0
-second_count = 0
-third_count = 0
 id_card = "not received"
 employee_handbook = "not received"
 intro()
